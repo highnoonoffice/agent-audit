@@ -115,25 +115,27 @@ export default function WorkflowDiagram({ steps, handoffs }: WorkflowDiagramProp
   }, [handoffs, steps]);
 
   return (
-    <div className="h-[360px] min-h-[300px] w-full rounded-xl border border-white/10 bg-zinc-950/80">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        fitView
-        fitViewOptions={{ padding: 0.25 }}
-        nodesDraggable={false}
-        nodesConnectable={false}
-        elementsSelectable={false}
-        panOnDrag={false}
-        panOnScroll={false}
-        zoomOnScroll={false}
-        zoomOnPinch={false}
-        zoomOnDoubleClick={false}
-        preventScrolling
-        proOptions={{ hideAttribution: true }}
-      >
-        <Background color="#2a2a2a" gap={32} size={1} />
-      </ReactFlow>
+    <div className="min-h-[300px] w-full overflow-x-auto rounded-xl border border-white/10 bg-zinc-950/80">
+      <div style={{ minWidth: `${Math.max(steps.length * 240 + 80, 400)}px`, height: "360px" }}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          fitView
+          fitViewOptions={{ padding: 0.25 }}
+          nodesDraggable={false}
+          nodesConnectable={false}
+          elementsSelectable={false}
+          panOnDrag={false}
+          panOnScroll={false}
+          zoomOnScroll={false}
+          zoomOnPinch={false}
+          zoomOnDoubleClick={false}
+          preventScrolling
+          proOptions={{ hideAttribution: true }}
+        >
+          <Background color="#2a2a2a" gap={32} size={1} />
+        </ReactFlow>
+      </div>
     </div>
   );
 }
